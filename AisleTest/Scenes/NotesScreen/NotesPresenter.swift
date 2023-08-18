@@ -123,7 +123,7 @@ final class NotesPresenter: NotesPresenterProtocol {
                 let groupOne = NSCollectionLayoutGroup.horizontal (
                     layoutSize: .init(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .fractionalHeight(0.5)
+                        heightDimension: .fractionalHeight(1)
                     ),
                     subitem: item,
                     count: 2
@@ -134,7 +134,7 @@ final class NotesPresenter: NotesPresenterProtocol {
                 let finalGroup = NSCollectionLayoutGroup.vertical(
                     layoutSize: .init(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .fractionalHeight(1)),
+                        heightDimension: .fractionalHeight(0.5)),
                     subitems: [groupOne])
                 
                 let section = NSCollectionLayoutSection(group: finalGroup)

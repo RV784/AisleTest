@@ -11,18 +11,16 @@ class LaunchScreenVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            let keyWindow = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first
-            
-            // Here check if token is there in userDefaults
-            // if yes, go directly to tab bar else go to login screen flow
-            if let token = LocalStorage.shared.authToken,
-               !token.isEmpty {
-                keyWindow?.rootViewController = TabBarController(selectedTab: .notes)
-            } else if let vc = LoginViewRouter.createModule() {
-                keyWindow?.rootViewController = UINavigationController(rootViewController: vc)
-            }
+        
+        let keyWindow = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first
+        
+        // Here check if token is there in userDefaults
+        // if yes, go directly to tab bar else go to login screen flow
+        if let token = LocalStorage.shared.authToken,
+           !token.isEmpty {
+            keyWindow?.rootViewController = TabBarController(selectedTab: .notes)
+        } else if let vc = LoginViewRouter.createModule() {
+            keyWindow?.rootViewController = UINavigationController(rootViewController: vc)
         }
     }
     
