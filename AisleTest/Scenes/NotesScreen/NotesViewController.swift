@@ -30,7 +30,27 @@ class NotesViewController: BaseViewController {
         }
     }
     
-    private var viewModel = [NotesViewModel]()
+    private var viewModel = [NotesViewModel]() {
+        didSet {
+            if viewModel.isEmpty {
+                notesCollectionView.refreshControl = nil
+            } else {
+                notesCollectionView.refreshControl = activityIndicator
+            }
+            notesCollectionView.reloadData()
+        }
+    }
+    
+    lazy private var activityIndicator: UIRefreshControl = {
+        let refresher = UIRefreshControl()
+        refresher.tintColor = .aisleYellow
+        refresher.addTarget(
+            self,
+            action: #selector(refreshNotesData),
+            for: .valueChanged
+        )
+        return refresher
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +58,11 @@ class NotesViewController: BaseViewController {
         presenter?.setCollectionLayout()
     }
     
-
+    @objc
+    func refreshNotesData() {
+        activityIndicator.endRefreshing()
+        presenter?.getNotesData()
+    }
     /*
     // MARK: - Navigation
 
@@ -76,7 +100,6 @@ extension NotesViewController: NotesViewProtocol {
     
     func updateCollection(with data: [NotesViewModel]) {
         viewModel = data
-        notesCollectionView.reloadData()
     }
 }
 

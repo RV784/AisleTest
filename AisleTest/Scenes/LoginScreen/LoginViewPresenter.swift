@@ -41,6 +41,7 @@ final class LoginViewPresenter: LoginViewPresenterProtocol {
         
         if number.count < 10 || number.count > 12 {
             view?.showAlert(with: "Please enter a valid phone numer")
+            return
         }
         
         addNumberToLocalStorage(number: number, code: code)

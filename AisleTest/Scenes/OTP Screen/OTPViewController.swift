@@ -25,7 +25,7 @@ class OTPViewController: BaseViewController {
     @IBOutlet private weak var loader: UIActivityIndicatorView!
     @IBOutlet private weak var resendBtnLabel: UILabel!
     
-    private var counter = 10
+    private var counter = 59
     private var otpTimer: Timer?
     
     
@@ -51,6 +51,7 @@ class OTPViewController: BaseViewController {
         otpTextField.layer.borderWidth = 0.5
         otpTextField.textContentType = .oneTimeCode
         otpTextField.keyboardType = .numberPad
+        otpTextField.becomeFirstResponder()
         
         loader.hidesWhenStopped = true
         
@@ -65,7 +66,7 @@ class OTPViewController: BaseViewController {
     
     private func startTimer() {
         otpTimer?.invalidate()
-        counter = 10
+        counter = 59
         otpTimerBtn.isHidden = true
         resendBtnLabel.isHidden = false
         otpTimer = Timer.scheduledTimer(timeInterval: 1,

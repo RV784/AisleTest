@@ -39,6 +39,7 @@ class LoginViewController: BaseViewController {
         mobileNumberField.layer.cornerRadius = 8
         mobileNumberField.layer.borderWidth = 0.5
         mobileNumberField.keyboardType = .phonePad
+        mobileNumberField.becomeFirstResponder()
         
         countryCodeField.layer.cornerRadius = 8
         countryCodeField.layer.borderWidth = 0.5
