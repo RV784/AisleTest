@@ -12,7 +12,7 @@ protocol OTPRouterProtocol: AnyObject {
     func popViewController()
 }
 
-final class OTPRouter: OTPRouterProtocol {
+final class OTPRouter {
     weak var view: OTPViewController?
     
     static func createModule(isRenewFlow: Bool = false) -> OTPViewController? {
@@ -30,7 +30,10 @@ final class OTPRouter: OTPRouterProtocol {
         
         return nil
     }
-    
+}
+
+// MARK: OTPRouterProtocol
+extension OTPRouter: OTPRouterProtocol {
     func gotoTabBar() {
         let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
         keyWindow?.rootViewController = TabBarController(selectedTab: .notes)

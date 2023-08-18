@@ -15,7 +15,7 @@ protocol LoginViewPresenterProtocol: AnyObject {
     func gotoOTPScreen()
 }
 
-final class LoginViewPresenter: LoginViewPresenterProtocol {
+final class LoginViewPresenter {
     weak var view: LoginViewProtocol?
     var router: LoginViewRouterProtocol?
     var interactor: LoginViewInteractorProtocol?
@@ -29,7 +29,10 @@ final class LoginViewPresenter: LoginViewPresenterProtocol {
         self.interactor = interactor
         self.router = router
     }
-    
+}
+
+// MARK: LoginViewPresenterProtocol
+extension LoginViewPresenter: LoginViewPresenterProtocol {
     func checkForError(code: String?, number: String?) {
         guard let code = code,
               let number = number,

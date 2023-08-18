@@ -7,9 +7,7 @@
 
 import UIKit
 
-protocol NotesRouterProtocol: AnyObject {
-    
-}
+protocol NotesRouterProtocol: AnyObject {}
 
 final class NotesRouter: NotesRouterProtocol {
     weak var view: NotesViewController?

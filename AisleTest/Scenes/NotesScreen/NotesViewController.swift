@@ -52,6 +52,13 @@ class NotesViewController: BaseViewController {
         return refresher
     }()
     
+    lazy private var refreshButtonIcon: UIBarButtonItem = {
+        let btn = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(didTapRefresh))
+        btn.title = "Refresh"
+        btn.tintColor = .aisleYellow
+        return btn
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.getNotesData()
@@ -63,18 +70,14 @@ class NotesViewController: BaseViewController {
         activityIndicator.endRefreshing()
         presenter?.getNotesData()
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @objc
+    func didTapRefresh() {
+        presenter?.getNotesData()
     }
-    */
-
 }
 
+// MARK: NotesViewProtocol
 extension NotesViewController: NotesViewProtocol {
     func showAlert(with message: String, completion: @escaping (() -> Void)) {
         showGenericUIAlert(message: message, completion: {
@@ -100,9 +103,11 @@ extension NotesViewController: NotesViewProtocol {
     
     func updateCollection(with data: [NotesViewModel]) {
         viewModel = data
+        self.navigationItem.rightBarButtonItem = viewModel.isEmpty ? refreshButtonIcon : nil
     }
 }
 
+// MARK: UICollectionViewDataSource
 extension NotesViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         viewModel.count

@@ -11,10 +11,12 @@ protocol LoginViewInteractorProtocol: AnyObject {
     func sendPhoneRequest()
 }
 
-final class LoginViewInteractor: BaseInteractor, LoginViewInteractorProtocol {
+final class LoginViewInteractor: BaseInteractor {
     weak var presenter: LoginViewPresenterProtocol?
-    
-    
+}
+
+// MARK: LoginViewInteractorProtocol
+extension LoginViewInteractor: LoginViewInteractorProtocol {
     func sendPhoneRequest() {
         guard let code = LocalStorage.shared.countryCode,
               let number = LocalStorage.shared.userNumber else { return }

@@ -14,7 +14,7 @@ class LaunchScreenVC: UIViewController {
         
         let keyWindow = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first
         
-        // Here check if token is there in userDefaults
+        // Here check if token is there or not
         // if yes, go directly to tab bar else go to login screen flow
         if let token = LocalStorage.shared.authToken,
            !token.isEmpty {

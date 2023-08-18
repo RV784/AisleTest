@@ -11,14 +11,16 @@ protocol OTPInteractorProtocol: AnyObject {
     func verifyOTP(otp: String)
 }
 
-final class OTPInteractor: BaseInteractor, OTPInteractorProtocol {
+final class OTPInteractor: BaseInteractor {
     weak var presenter: OTPPresenterProtocol?
     var isRenewFlow = false
     
     init(isRenewFlow: Bool) {
         self.isRenewFlow = isRenewFlow
     }
-    
+}
+
+extension OTPInteractor: OTPInteractorProtocol {
     func verifyOTP(otp: String) {
         guard let countryCode = LocalStorage.shared.countryCode,
               let number = LocalStorage.shared.userNumber else { return }
@@ -27,7 +29,7 @@ final class OTPInteractor: BaseInteractor, OTPInteractorProtocol {
             "number": "\(countryCode)\(number)",
             "otp": otp
         ]
-            
+        
         presenter?.showLoading()
         request(isToken: false, params: postData, endpoint: .verifyOtp, requestType: .post, postData: nil) { [weak self] data in
             self?.presenter?.hideLoading()

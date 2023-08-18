@@ -40,10 +40,12 @@ class LoginViewController: BaseViewController {
         mobileNumberField.layer.borderWidth = 0.5
         mobileNumberField.keyboardType = .phonePad
         mobileNumberField.becomeFirstResponder()
+        mobileNumberField.delegate = self
         
         countryCodeField.layer.cornerRadius = 8
         countryCodeField.layer.borderWidth = 0.5
         countryCodeField.keyboardType = .phonePad
+        countryCodeField.delegate = self
         
         loader.hidesWhenStopped = true
     }
@@ -67,6 +69,7 @@ class LoginViewController: BaseViewController {
     }
 }
 
+// MARK: LoginViewProtocol
 extension LoginViewController: LoginViewProtocol {
     func showAlert(with message: String) {
         showGenericUIAlert(message: message, completion: {}, buttonTitle: "Ok")
@@ -82,5 +85,15 @@ extension LoginViewController: LoginViewProtocol {
     
     func showGenericAlert() {
         showGenericUIAlert(message: "Something went wrong, please try again later", completion: {})
+    }
+}
+
+// MARK: UITextFieldDelegate
+extension LoginViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string.rangeOfCharacter(from: .letters) != nil {
+            return false
+        }
+        return true
     }
 }

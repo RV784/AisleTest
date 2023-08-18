@@ -46,7 +46,7 @@ OTP</string>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fce-Mc-4Bd">
                                 <rect key="frame" x="30" y="310.66666666666669" width="96" height="40"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="96" id="9Cq-AY-3uN"/>
                                     <constraint firstAttribute="height" constant="40" id="WlJ-Rg-pL7"/>
@@ -58,8 +58,8 @@ OTP</string>
                                     <action selector="submitBtnClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="e0t-xU-1MI"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="35E-DN-t7D">
-                                <rect key="frame" x="186" y="416" width="20" height="20"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="35E-DN-t7D">
+                                <rect key="frame" x="30" y="310.66666666666669" width="96" height="40"/>
                             </activityIndicatorView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="i8w-9m-092">
                                 <rect key="frame" x="138" y="330.66666666666669" width="0.0" height="0.0"/>
@@ -122,8 +122,8 @@ OTP</string>
     </scenes>
     <resources>
         <image name="edit_icon" width="14" height="14"/>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

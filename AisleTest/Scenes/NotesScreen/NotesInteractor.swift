@@ -11,8 +11,12 @@ protocol NotesInteractorProtocol: AnyObject {
     func getNotesData()
 }
 
-final class NotesInteractor: BaseInteractor, NotesInteractorProtocol {
+final class NotesInteractor: BaseInteractor {
     weak var presenter: NotesPresenterProtocol?
+}
+
+// MARK: NotesInteractorProtocol
+extension NotesInteractor: NotesInteractorProtocol {
     
     func getNotesData() {
         presenter?.showLoading()
@@ -23,13 +27,15 @@ final class NotesInteractor: BaseInteractor, NotesInteractorProtocol {
                     let result = try JSONDecoder().decode(NotesAPIModel.self, from: data)
                     dump(result)
                     self?.processData(data: result)
+                    return
                 } catch let error {
                     print(error)
                 }
             }
-            
+            self?.presenter?.updateViewModel(with: [])
         } _: { [weak self] error, tokenExpError in
             self?.presenter?.hideLoading()
+            self?.presenter?.updateViewModel(with: [])
             if tokenExpError {
                 self?.presenter?.showTokenExpError()
             } else {

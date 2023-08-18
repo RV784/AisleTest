@@ -16,7 +16,7 @@ protocol OTPPresenterProtocol: AnyObject {
     func popViewController()
 }
 
-final class OTPPresenter: OTPPresenterProtocol {
+final class OTPPresenter {
     weak var view: OTPViewProtocol?
     var interactor: OTPInteractorProtocol?
     var router: OTPRouterProtocol?
@@ -30,6 +30,10 @@ final class OTPPresenter: OTPPresenterProtocol {
         self.interactor = interactor
         self.router = router
     }
+}
+
+// MARK: OTPPresenterProtocol
+extension OTPPresenter: OTPPresenterProtocol {
     
     func verifyOTP(otp: String?) {
         guard let otp = otp,

@@ -20,7 +20,7 @@ class MainNoteCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var nameAgeLabel: UILabel!
     @IBOutlet private weak var blurrView: UIView!
     
-    private var cornerRadius: CGFloat = 12
+    private let cornerRadius: CGFloat = 12
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,7 +33,7 @@ class MainNoteCollectionViewCell: UICollectionViewCell {
         var nameText = "\(data.name)"
         nameText.append(data.age == -1 ? "" : ", \(data.age)")
         nameAgeLabel.text = nameText
-        mainImageView.kf.setImage(with: URL(string: data.imageURLStr))
+        mainImageView.kf.setImage(with: URL(string: data.imageURLStr), placeholder: UIImage(named: "profile_placeholder"))
         
         if data.imageIsBlur {
             blurrView.isHidden = false

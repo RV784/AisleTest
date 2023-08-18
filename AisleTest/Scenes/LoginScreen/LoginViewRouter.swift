@@ -11,7 +11,7 @@ protocol LoginViewRouterProtocol: AnyObject {
     func presentOTPScreen()
 }
 
-final class LoginViewRouter: LoginViewRouterProtocol {
+final class LoginViewRouter {
     weak var view: LoginViewController?
     
     static func createModule() -> LoginViewController? {
@@ -29,7 +29,10 @@ final class LoginViewRouter: LoginViewRouterProtocol {
         
         return nil
     }
-    
+}
+
+// MARK: LoginViewRouterProtocol
+extension LoginViewRouter: LoginViewRouterProtocol {
     func presentOTPScreen() {
         if let vc = OTPRouter.createModule() {
             view?.navigationController?.present(vc, animated: true)

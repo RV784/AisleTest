@@ -40,6 +40,11 @@ class OTPViewController: BaseViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     private func initAppearance() {
         submitBtn.layer.cornerRadius = submitBtn.frame.height/2
         submitBtn.setTitle("Continue", for: .normal)
@@ -52,6 +57,7 @@ class OTPViewController: BaseViewController {
         otpTextField.textContentType = .oneTimeCode
         otpTextField.keyboardType = .numberPad
         otpTextField.becomeFirstResponder()
+        otpTextField.delegate = self
         
         loader.hidesWhenStopped = true
         
@@ -109,6 +115,7 @@ class OTPViewController: BaseViewController {
     }
     
     @IBAction func resentBtnClicked(_ sender: Any) {
+        print(#function)
         startTimer()
         // TODO: Make an API call to request new OTP here.
     }
@@ -122,6 +129,7 @@ class OTPViewController: BaseViewController {
     }
 }
 
+// MARK: OTPViewProtocol
 extension OTPViewController: OTPViewProtocol {
     func showAlert(with message: String) {
         showGenericUIAlert(message: message, completion: {}, buttonTitle: "Ok")
@@ -137,5 +145,15 @@ extension OTPViewController: OTPViewProtocol {
     
     func showGenericAlert() {
         showGenericUIAlert(message: "Something went wrong, please try again later", completion: {})
+    }
+}
+
+// MARK: UITextFieldDelegate
+extension OTPViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string.rangeOfCharacter(from: .letters) != nil {
+            return false
+        }
+        return true
     }
 }

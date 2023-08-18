@@ -17,7 +17,7 @@ protocol NotesPresenterProtocol: AnyObject {
     func setCollectionLayout()
 }
 
-final class NotesPresenter: NotesPresenterProtocol {
+final class NotesPresenter {
     weak var view: NotesViewProtocol?
     var interactor: NotesInteractorProtocol?
     var router: NotesRouterProtocol?
@@ -37,6 +37,10 @@ final class NotesPresenter: NotesPresenterProtocol {
         self.interactor = interactor
         self.router = router
     }
+}
+
+// MARK: NotesPresenterProtocol
+extension NotesPresenter: NotesPresenterProtocol {
     
     func getNotesData() {
         interactor?.getNotesData()
@@ -76,7 +80,7 @@ final class NotesPresenter: NotesPresenterProtocol {
                 let headerLayout = NSCollectionLayoutBoundarySupplementaryItem(
                     layoutSize: .init(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .estimated(80)
+                        heightDimension: .estimated(70)
                     ),
                     elementKind: "MainNotesHeaderView.Header",
                     alignment: .top
@@ -85,7 +89,7 @@ final class NotesPresenter: NotesPresenterProtocol {
                 
                 let item = NSCollectionLayoutItem(
                     layoutSize: .init(
-                        widthDimension: .fractionalWidth(0.96),
+                        widthDimension: .fractionalWidth(1),
                         heightDimension: .fractionalHeight(1)
                     )
                 )
@@ -94,10 +98,11 @@ final class NotesPresenter: NotesPresenterProtocol {
                     widthDimension: .fractionalWidth(1),
                     heightDimension: .fractionalWidth(1)
                 )
+                
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+                group.contentInsets = .init(top: 16, leading: 16, bottom: 16, trailing: 16)
                 let section = NSCollectionLayoutSection(group: group)
                 section.orthogonalScrollingBehavior = .groupPaging
-                section.contentInsets = .init(top: 16, leading: 10, bottom: 16, trailing: 12)
                 if self.viewModel[sectionIdx].headerData != nil {
                     section.boundarySupplementaryItems = [headerLayout]
                 }
@@ -119,6 +124,8 @@ final class NotesPresenter: NotesPresenterProtocol {
                         heightDimension: .fractionalHeight(1)
                     )
                 )
+                
+                item.contentInsets = .init(top: 4, leading: 8, bottom: 4, trailing: 8)
                 
                 let groupOne = NSCollectionLayoutGroup.horizontal (
                     layoutSize: .init(

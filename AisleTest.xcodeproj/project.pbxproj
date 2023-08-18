@@ -20,7 +20,6 @@
 		AB7359552A8EAC1900828816 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7359542A8EAC1900828816 /* LocalStorage.swift */; };
 		ABBA170A2A8E7CB5005706BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBA17092A8E7CB5005706BB /* AppDelegate.swift */; };
 		ABBA170C2A8E7CB5005706BB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBA170B2A8E7CB5005706BB /* SceneDelegate.swift */; };
-		ABBA170E2A8E7CB5005706BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBA170D2A8E7CB5005706BB /* ViewController.swift */; };
 		ABBA17132A8E7CB7005706BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABBA17122A8E7CB7005706BB /* Assets.xcassets */; };
 		ABBA17162A8E7CB7005706BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABBA17142A8E7CB7005706BB /* LaunchScreen.storyboard */; };
 		ABBA17202A8E8BCE005706BB /* LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBA171F2A8E8BCE005706BB /* LaunchScreenVC.swift */; };
@@ -66,7 +65,6 @@
 		ABBA17062A8E7CB5005706BB /* AisleTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AisleTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABBA17092A8E7CB5005706BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABBA170B2A8E7CB5005706BB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		ABBA170D2A8E7CB5005706BB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		ABBA17122A8E7CB7005706BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABBA17152A8E7CB7005706BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ABBA17172A8E7CB7005706BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 				032C8D28F7B935FDD0EA6C43 /* Pods-AisleTest.debug.xcconfig */,
 				A0D91C415F265C2CB8CD75B7 /* Pods-AisleTest.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -197,7 +194,6 @@
 				ABBA171D2A8E8BAA005706BB /* Scenes */,
 				ABBA17092A8E7CB5005706BB /* AppDelegate.swift */,
 				ABBA170B2A8E7CB5005706BB /* SceneDelegate.swift */,
-				ABBA170D2A8E7CB5005706BB /* ViewController.swift */,
 				ABBA17122A8E7CB7005706BB /* Assets.xcassets */,
 				ABBA17172A8E7CB7005706BB /* Info.plist */,
 			);
@@ -434,7 +430,6 @@
 				ABBA17382A8E988E005706BB /* LoginViewInteractor.swift in Sources */,
 				ABBA17342A8E987D005706BB /* LoginViewPresenter.swift in Sources */,
 				ABBA17292A8E947A005706BB /* OTPInteractor.swift in Sources */,
-				ABBA170E2A8E7CB5005706BB /* ViewController.swift in Sources */,
 				ABBA17272A8E9471005706BB /* OTPPresenter.swift in Sources */,
 				AB0F52CC2A8F775500CA243B /* InterestedInYouHeaderView.swift in Sources */,
 				ABBA170A2A8E7CB5005706BB /* AppDelegate.swift in Sources */,
@@ -521,7 +516,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -575,7 +570,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
