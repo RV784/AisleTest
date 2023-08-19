@@ -33,12 +33,15 @@ extension LoginViewInteractor: LoginViewInteractorProtocol {
                     let result = try JSONDecoder().decode(PhoneResponseModel.self, from: data)
                     self?.processData(data: result)
                     dump(result)
+                    return
                 } catch let error {
                     print(error)
                 }
             }
+            self?.presenter?.showGenericAlert()
         } _: { [weak self] error, _ in
             self?.presenter?.hideLoading()
+            self?.presenter?.showGenericAlert()
         }
     }
     
