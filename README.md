@@ -2,7 +2,6 @@ This is my submission for Aisle Skill test:
 
 Do run pod install before building the iOS-Project.
 
-
 I've implemented this Aisle skill test using VIPER Architecture.
 Gist About VIPER -
  -> View is responsible for User Interface, i.e what is shown to user
