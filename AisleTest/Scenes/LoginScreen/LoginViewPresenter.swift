@@ -34,7 +34,7 @@ final class LoginViewPresenter {
 // MARK: LoginViewPresenterProtocol
 extension LoginViewPresenter: LoginViewPresenterProtocol {
     func checkForError(code: String?, number: String?) {
-        guard let code = code,
+        guard var code = code,
               let number = number,
               !code.isEmpty,
               !number.isEmpty else {
@@ -47,6 +47,9 @@ extension LoginViewPresenter: LoginViewPresenterProtocol {
             return
         }
         
+        if code.first != "+" {
+            code.insert(Character("+"), at: code.startIndex)
+        }
         addNumberToLocalStorage(number: number, code: code)
         interactor?.sendPhoneRequest()
     }

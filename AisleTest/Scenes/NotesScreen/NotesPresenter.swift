@@ -72,6 +72,7 @@ extension NotesPresenter: NotesPresenterProtocol {
         setCompositionalLayout()
     }
     
+    /// Here I'm using composiitonal layout for the third screen
     private func setCompositionalLayout() {
         let layout = UICollectionViewCompositionalLayout { sectionIdx, _ in
             switch self.viewModel[sectionIdx].widgetType {
