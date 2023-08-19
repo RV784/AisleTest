@@ -21,6 +21,6 @@ Gist About VIPER:-
 ## Features
 
 - Full Login flow implemented 
-- Error handling 
+- Error handling (along with 401 Token renew handling)
 - Compositional Layout used for dynamic UI
 - Proper Architecture followed for better code readability

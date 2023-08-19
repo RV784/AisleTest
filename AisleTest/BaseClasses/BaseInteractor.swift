@@ -50,10 +50,14 @@ class BaseInteractor {
             if let httpResponse = response as? HTTPURLResponse {
                 print(httpResponse.statusCode)
                 
+                /// If error is due to 401
+                /// Then is this case we've to renew the token
+                /// Phone API will be called and then the OTP screen be pushed.
                 if httpResponse.statusCode == 401,
                    isToken {
                     DispatchQueue.main.async {
                         failure(nil, true)
+                        return
                     }
                 }
             }
